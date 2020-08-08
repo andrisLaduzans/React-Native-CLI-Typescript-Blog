@@ -39,7 +39,7 @@ _tsconfig.json_
 
 in root , create folder called `src` and in that folder create subfolder `views` and in that folder create another subfolder called `home` and in that create new file `Home.tsx` also here's a cool trick how to do something like that faster</br>
 
-*cool-trick.gif*
+*cool-trick.gif*<br>
 ![Cool trick](../assets_posts/part-1/cool-trick.gif)
 
 in that just create most basic React component. something like this.
@@ -59,6 +59,7 @@ Here's what we got so far:<br>
 ![storybook](../assets_posts/part-1/img3.png)|![file structure](../assets_posts/part-1/img4.png)
 :-:|:-:
 *Your app should look something like this*|*And your folder structure should look something like this.*
+
 Time to Add Storybook<br>
 
 ## Add Storybook 
@@ -68,10 +69,10 @@ go to storybook docs https://storybook.js.org/docs/guides/guide-react-native/#au
 ```
 npx -p @storybook/cli sb init --type react_native
 ```
-this will install storybook installer and after that is done you will get prompted to this question:
-```
+this will install storybook installer and after that is done you will get prompted to this question:<br>
+`
 Do you want to install dependencies necessary to run storybook server? You can manually do it later by install @storybook/react-native-server (y/N) • Adding storybook support to your "React Native" app`
-```
+`
 
 select `no` cause we will be using storybook from our app and will not be launching storbyook server.<br>
 Let's test whether it worked.<br>
@@ -82,7 +83,7 @@ In your `intex.js` located in root comment out your App component and instead ad
 
 Time to launch app and test if it even runs now. hit your `npm run andriod` or `npm run ios`
 
-*storybook should run successfully*
+*storybook should run successfully*<br>
 ![storybook_runs](../assets_posts/part-1/img6.png)<br>
 
 So far so good, we know we successfully installed storybook and we can launch it from our app.
@@ -121,7 +122,7 @@ we need to modify `storybook/index.ts` file<br>
 we removed `AppRegistry`, since our storybook will be launching from within our app, it's gonna use AppRegistry declared in `index.js` file ...in other words *'aaaay don' worry bout it!'*<br>
 lets run the app again. fingers crossed it should run now<br>
 
-*Storybook should now look something like this*
+*Storybook should now look something like this*<br>
 ![launched_storybook](../assets_posts/part-1/img12.png)<br>
 
 
