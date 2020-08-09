@@ -18,4 +18,4 @@ As an additional content i am adding this full project in ./project directory, e
 
 [Part 1: RN CLI setup with TS + Storybook](./posts/part1_TS+Storybook.md)
 
-[Part 2: RN CLI, TS module resolving](posts/part2_TS_module_resolving)
+[Part 2: RN CLI, TS module resolving](posts/part2_TS_module_resolving.md)
