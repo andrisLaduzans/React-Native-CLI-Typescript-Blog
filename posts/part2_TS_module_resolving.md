@@ -129,6 +129,67 @@ Thats it. you have non-relative imports now for your component modules.
 _(further examples are not going to be part of the project, just code snippets and examples you don't need to include them if you don't want to)_<br>
  So if you follow the official react native docs<br>
 https://reactnative.dev/docs/typescript#using-custom-path-aliases-with-typescript you will notice that your code will not compile with these custom aliases. And it took me DAYS to understand why, as i stumbled upon a stackoverflow thread where one comment, yes just a comment, not even an answer, vaguely mentions, that RN pathing does not really work like Typescript pathing. So even if you did everything , described in RN docs, all you will see in your app is just a red screen of death, pain, and suffering. So i already showed you one of the 'workarounds' - the indexing method. Typescript documentation mentions package.json method , described here https://www.typescriptlang.org/docs/handbook/module-resolution.html#how-typescript-resolves-modules , but this also does not work. Instead of just 'types', as described in docs, i made package.json file in src/views/ with this content.<br>
-
 _src/views/package.json_<br>
+```
+{
+  "name": "@views",
+  "main": "index.ts"
+}
+```
+and it actually worked, but i still needed to add the same index.ts file with imports/exports of all packages. Also i could use the same imports as described previously, this method just added one extra file to project.
 
+Another method, If you want to import your modules separately, you can create separate index.ts files with import/export statements,  in src/home create index.ts file with this content:
+```
+import Home from './Home';
+export {Home};
+```
+now you can import Home separately like this
+
+_App.tsx_
+```
+...
+import {Home} from '@views/home/index';
+...
+```
+OR ... :) create package.json file in src/views/home
+
+_src/views/home/package.json_
+```
+{
+  "name": "@views/home/Home",
+  "main": "./Home.tsx"
+}
+```
+
+and import default Home component, which also gives you freedom to instantly rename it however you like this<br>
+
+_App.tsx_
+```
+import Home from '@views/home/Home';
+```
+_App.tsx (default import rename)_
+```
+import Lala from '@views/home/Home';
+
+const App: FC = () => {
+  return (
+    <View style={styles.container}>
+      <Text>Hello App</Text>
+      <Lala />
+    </View>
+  );
+```
+as you can see there are quite a few options, but the one i showed you in "configuration" section, to me seems like cleaner option. Especially when your application grows, and you have tenths and tenths of components , it is much more cleaner to import them with a single import rather than long list of individual imports. 
+
+```
+import {Button, AnotherButton, ThirdButton, Card, Cat} from '@components';
+```
+vs
+```
+import {Button} from '@components';
+import {AnotherButton} from '@components';
+import {ThirdButton} from '@components';
+import {Card} from '@components';
+import {Cat} from '@components';
+```
+That's all for part 2 i hope this helped someone out or maybe learned something new about typescript module resolving.
