@@ -10,9 +10,9 @@ open `tsconfig.json` file and change "jsx": "react",  ->  "jsx": "react-native",
 #### theory time  💪
 
 there are some key differences how typescript resolves import modules 
-- relative
+- relative<br>
 ![relative imports example](../assets_posts/part-2/img1.png)<br>
-where you add dots and the module you are importing is relative to the directory or file you are currently in this example we are in 'storybook/stories/index.tsx. this means you are first (../) looking one folder up in 'storybook' , then another folder up (+../) in root, then +src/components/buttons/Btn<br>
+where you add dots and the module you are importing is relative to the directory or file you are currently in. In this example we are in `storybook/stories/index.tsx.` this means you are first (../) looking one folder up in 'storybook' , then another folder up (+../) in root, then +src/components/buttons/Btn<br>
 
 ![exmplanation](../assets_posts/part-2/img2.png)<br>
 
@@ -22,7 +22,7 @@ where you add dots and the module you are importing is relative to the directory
 these modules are resolved in relation to the "baseUrl" , if such is specified, if not then these modules are resolved in relation to tsconfig file itself. Usually these would be your node_modules. Also such modules can be resolved to 'ambient modules' ambient modules are basically 'd.ts' files. 
 
 (off topic)<br>
-_common usecase of an ambient module declaration would be when you try to use some library which does not support typescript and you cannot find types anywhere in the whole internets. So in root you can create file called something like 'types.d.ts' or 'declarations.d.ts' and in that file you can declare your missing npm module type like 'declare module "name-of-the-npm-package-you-want-to-use";' and now this npm package's import would be treated as 'any type' which would look something like this_<br>
+_common usecase of an ambient module declaration would be when you try to use some library which does not support typescript and you cannot find types anywhere in the whole internets. So in root you can create file called something like 'types.d.ts' or 'declarations.d.ts' and in that file you can declare your missing npm module type like '`declare module "name-of-the-npm-package-you-want-to-use";`' and now this npm package's import would be treated as `any` type which would look something like this_<br>
 ![d.ts file](../assets_posts/part-2/img4.png)<br>
 _anyway, back to topic._
 
