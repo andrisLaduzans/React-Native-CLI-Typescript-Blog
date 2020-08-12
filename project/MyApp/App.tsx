@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import Home from './src/views/home/Home';
+import {Home} from '@views';
 
 const App: FC = () => {
   return (
