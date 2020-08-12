@@ -1,10 +1,9 @@
 import React from 'react';
 
 import {storiesOf} from '@storybook/react-native';
-import Login from '../../src/views/login/Login';
-import Home from '../../src/views/home/Home';
-import Btn from '../../src/components/buttons/Btn';
 import Welcome from './Welcome/Welcome';
+import {Login, Home} from '@views';
+import {Btn} from '@components';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome />);
 
