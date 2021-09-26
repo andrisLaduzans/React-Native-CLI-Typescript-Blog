@@ -10,7 +10,7 @@ npx react-native init MyApp --template react-native-template-typescript
 
 after that is done you can skip `expo install`, you can skip `Ignite install`, go to https://reactnative.dev/docs/typescript#adding-typescript-to-an-existing-project</br>
 and **skip 1. step**, you dont need that, since you already installed ts template.</br>
-go to step 2. open your `tsconfig.json` file, located in root of your newly created project, delete all content in `tsconfig.json` and replace it with the code from the docs.
+go to step 2. open your `tsconfig.json` file, located in `root` (base directory of whole project containing `index.js`, `node_modules`, various config files, etc) of your newly created project, delete all content in `tsconfig.json` and replace it with the code from the docs.
 
 _tsconfig.json_
 
@@ -37,8 +37,22 @@ _tsconfig.json_
 }
 ```
 
-in root , create folder called `src` and in that folder create subfolder `views` and in that folder create another subfolder called `home` and in that create new file `Home.tsx` also here's a cool trick how to do something like that faster</br>
+in `root` , create folder called `src` and move App.tsx from `root` folder to the newly created `src`.
 
+This will help you the with project's structure.
+For quite a while i used to leave App.tsx file in the root directory,
+but later i noticed that my root folders in bigger projects seem to get cluttered with all kinds of utility files,
+linter settings, prettier settings, .env files, etc.
+To the point where i have had around 20 files in `root` and it was getting a bit hard to even find the `App.tsx` file.
+Plus, since `src` directory will be your codebase, containing all of our written code,
+the App.tsx file will without a doubt fit into <i>your code</i> category so it would make sense to move it to src.
+
+Next, in `src` folder create subfolder `views`
+and in that folder create another subfolder called `Home`
+and in that create new file `index.tsx`
+also here's a cool trick how to do something like that faster</br>
+
+<!-- TODO: change gif to appropriate folder structure according to text above -->
 _cool-trick.gif_<br>
 ![Cool trick](../assets_posts/part-1/cool-trick.gif)
 
